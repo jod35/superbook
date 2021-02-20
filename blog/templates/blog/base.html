@@ -1,0 +1,43 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/main.css' %}">
+    
+    {% if title %}
+        <title>SuperBook |{{title}}</title>
+    {% else %}
+        <title>SuperBook</title>
+    {% endif %}
+        
+</head>
+<body class="container">
+    <header class="nav-bar nav bg-primary">
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'blog:home' %}" class="btn btn-primary">Home</a>
+            <a href="" class="btn btn-primary">Profile</a>
+            <a href="{% url 'blog:logout' %}" class="btn btn-primary">Log Out</a>
+        {% else %}
+            <a href="{% url 'blog:home' %}" class="btn btn-primary">Home</a>
+            <a href="{% url 'blog:signup' %}" class="btn btn-primary">Signup</a>
+            <a href="{% url 'blog:login' %}" class="btn btn-primary">Login</a>
+        {% endif %}
+            
+    </header>
+    <main>
+        {% block body %}
+    
+        {% endblock body %}
+    </main>
+    <footer class="text-primary">
+        &copy; Superblock <script>document.write(new Date().getFullYear())</script>
+    </footer>
+        
+</body>
+</html>

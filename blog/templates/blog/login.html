@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+<div class="form">
+    <h3>Login</h3>
+    <br>
+    
+    {% if messages %}
+        
+        {% for message in messages %}
+            <p class="alert alert-{{message.tags}}">
+                {{message}}
+            </p>
+        {% endfor %}
+            
+    {% endif %}
+        
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for f in form %}
+        <div class="form-group">
+            {{f.label}}
+            {{f}}
+        </div>
+        {% endfor %}
+        <button type="submit" class="mybtn btn btn-primary">Sign In</button>
+    </form>
+</div>
+{% endblock body %}
+    

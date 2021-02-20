@@ -1,0 +1,21 @@
+.nav{
+    padding: 20px;
+}
+main{
+    min-height: 60vh;
+}
+
+footer{
+    padding: 20px;
+}
+
+.form{
+    width: 40%;
+    margin:100px auto;
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+
+.form input{
+    width: 100%;
+}
