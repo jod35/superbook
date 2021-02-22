@@ -12,7 +12,8 @@ class HomeView(View):
 
     def get(self, request):
         context = {
-            'title': self.title
+            'title': self.title,
+            'posts':Post.objects.all()
         }
         return render(request, self.template_name, context)
 
@@ -88,7 +89,50 @@ class UserProfileView(View):
 
     def get(self, request):
         profile = Profile.objects.filter(user=request.user).first()
+        posts=Post.objects.filter(author=request.user)
         context = {
-            'profile': profile
+            'profile': profile,
+            'posts':posts
         }
         return render(request, self.template_name, context)
+
+
+class PostCreateView(View):
+    template_name='blog/createpost.html'
+    form_class=PostCreateForm
+    initial={'key':'value'}
+
+    def get(self,request):
+        context={
+            'form':self.form_class(initial=self.initial)
+        }
+        return render(request,self.template_name,context)
+
+
+    def post(self,request):
+        form=PostCreateForm(request.POST)
+
+        if form.is_valid():
+            form_obj=form.save(commit=False)
+            form_obj.author=request.user
+            form_obj.save()
+
+            return redirect('blog:home')
+
+        return render(request,self.template_name)
+
+
+
+class PostDetailView(View):
+    template_name='blog/postdetails.html'
+
+
+    def get(self,request,title):
+        post=Post.objects.get(title=title)
+
+        context={
+            'post':post
+        }
+        return render(request,self.template_name,context)
+
+        

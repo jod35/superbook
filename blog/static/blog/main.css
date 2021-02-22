@@ -19,3 +19,23 @@ footer{
 .form input,textarea{
     width: 100%;
 }
+.posts{
+    padding: 20px;
+}
+.post{
+    background-color: white;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid lightgray;
+}
+.post-header{
+    display: flex;
+    justify-content: space-between;
+}
+.post-date{
+    margin-top: 20px;
+}
+.post-detail{
+    width:100%;
+    padding: 20px;
+}

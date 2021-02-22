@@ -1,5 +1,25 @@
 {% extends 'blog/base.html' %}
 {% block body %}
-    <h1>Hello, Welcome</h1>
+<div class="posts container">
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post">
+                <div class="post-header">
+                    <a href="/details/{{post.title}}"><h3 class="text-info">{{post.title}}</h3></a>
+
+                    <small class="post-date">{{post.created}}</small> 
+                </div>
+                <p class="text-info">by {{post.author}}</p>
+                <p>{{post.body}}</p>
+                <a href="/details/{{post.title}}">Details</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="">
+            <p>There are no posts yet. <a href="{% url 'blog:create_post' %}">Create a Post</a></p>
+        </div>
+    {% endif %}
+             
+</div>
 {% endblock body %}
     
