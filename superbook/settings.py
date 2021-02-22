@@ -124,3 +124,8 @@ STATICFILES_DIR=BASE_DIR / 'static'
 
 #LOGIN_SETTINGS
 LOGIN_REDIRECT_URL='/'
+
+
+#media settings
+MEDIA_URL='/media/'
+MEDIA_ROOT=BASE_DIR / 'media'

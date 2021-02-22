@@ -10,12 +10,12 @@ footer{
 }
 
 .form{
-    width: 40%;
-    margin:100px auto;
+    width: 80%;
+    margin:50px auto;
     border: 1px solid lightgray;
     padding: 20px;
 }
 
-.form input{
+.form input,textarea{
     width: 100%;
 }
